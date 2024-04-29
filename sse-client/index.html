@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SSE</title>
+  </head>
+
+  <body>
+    <h2>SSE</h2>
+    <div id="message">Message:</div>
+    <script>
+      let eventSource = new EventSource("http://localhost:8080/sse");
+
+      eventSource.onmessage = function (e) {
+        let data = JSON.parse(e.data);
+        document.getElementById("message").innerHTML = "Message: " + data;
+      };
+    </script>
+  </body>
+</html>
